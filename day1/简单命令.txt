@@ -1,0 +1,10 @@
+who 查看系统有谁人登录
+who|wc -l                wc（字数计算程序） l（行数line） w（字数word） c（字符数character）
+| 管道  前一个输出成后一个输入
+cat > nusers 将终端输入的内容复制到nusers文件中 ctrl+d end of file
+
+位与第一行的#!
+#! /bin/sh 系统用shell来解析
+#! /bin/csh 系统用csh来解析
+各系统对#!行的长度限制 63-1024
+#! /bin/sh -   // - 表示没有shell选项，基于安全。避免欺诈式攻击（spoofing attack）
