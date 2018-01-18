@@ -48,9 +48,11 @@ tr -d '\r' < dos-file.txt | sort > UNIX-file.txt
 /dev/tty 打开此文件时会自动将它重定向到一个终端 stty命令控制终端各种设置
 例 可查看本目录下的a.sh
 
+.sh文件中加参数 ./finduser.sh root
+
 让shell自动找到sh文件，在home下建立自己的bin PATH=$PATH:$HOME/bin
 永久有效 在.profile文件中加PATH=$PATH:$HOME/bin,每次登录shell都会读取.profile文件
 
 四.简单的执行跟踪
 sh -x nusers
-
+在shell脚本中 set +x 关闭跟踪功能; -x 打开跟踪功能
