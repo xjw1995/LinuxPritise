@@ -1,10 +1,54 @@
+一.一个简单的脚本：
 who 查看系统有谁人登录
 who|wc -l                wc（字数计算程序） l（行数line） w（字数word） c（字符数character）
 | 管道  前一个输出成后一个输入
 cat > nusers 将终端输入的内容复制到nusers文件中 ctrl+d end of file
 
-位与第一行的#!
+二.位与第一行的#!：
 #! /bin/sh 系统用shell来解析
 #! /bin/csh 系统用csh来解析
 各系统对#!行的长度限制 63-1024
 #! /bin/sh -   // - 表示没有shell选项，基于安全。避免欺诈式攻击（spoofing attack）
+
+三.命令与参数：
+1.一空白键或TAB键分隔
+2.命令名称 + 选项 +参数
+3.选择开头  -   选项简写    -l
+           --  选项全拼    --add --version
+4.; 分隔同一行多条命令，依次执行
+  & 不用等该命令完成，就执行下一个命令
+
+变量：
+$ a=a_b_c   分配变量
+$ echo $a   打印变量
+如果有空格，要带“”
+$ a="a b c"
+
+简单echo输出：
+$ echo a b c d
+$ echo -n "a b c d"  省略换行，光标在结尾
+
+printf输出：
+和c printf差不多
+
+I/O重定向（标准输入/输出）：
+$ cat  可知默认标准输入、输出以及错误输出都是终端
+重定向和管道
+< 改变标准输入    
+> 改变标准输出
+>> 附加到文件结尾
+例：tr -d '\r' < dos-file.txt > UNIX-file.txt 
+标准输入dos 删除空格 输出到UNIX
+
+| 管道 
+tr -d '\r' < dos-file.txt | sort > UNIX-file.txt
+
+特殊文件/dev/null与/dev/tty
+/dev/null 位桶（bit bucket） 传输到此文件的数据都会被系统丢掉
+/dev/tty 打开此文件时会自动将它重定向到一个终端 stty命令控制终端各种设置
+例 可查看本目录下的a.sh
+
+
+
+
+
