@@ -1,0 +1,42 @@
+3.1 查找文本
+grep：最早的文本匹配程序，使用POSIX定义的基本正则表达式
+egrep：扩展式grep （功能更加强大的正则表达式）
+fgrep：fast grep 匹配固定字符串而非正则表达式
+
+2010 POSIX标准，只纳入合并后的grep命令
+
+3.1.1 简单的grep
+$ who|grep -F root 查找固定字符串root;grep默认模式等同使用了-F
+
+3.1.2正则
+\{\} 有大括号使用\
+\{n,m\}  值 0-PE_DUP_MAX（getconf RE_DUP_MAX获取32767）
+
+文本匹配锚点
+[[:upper:]]\{3\} 居中第4,5,6个字符
+[[:upper:]]\{3\}$ 结尾3个
+^[[:upper:]]\{3\} 开头3个
+
+3.2文本替换
+sed 's/（文中需要替换的地方：正则）/（替换的内容）/' file
+例 sed 's/:.*//' /etc/passwd 删除第一个冒号之后所有内容
+指定n个匹配替换   sed 's/Tolstoy/Camus/2' < example.txt     第二个匹配者
+多处替换  1.sed -e 's/foo/bar/g'  -e 's/chicken/cow/g' myfile.xml > myfile2.xml        使用-e
+         2.cat fixup.sed    s/foo/bar/g                                           
+                            s/chicken/cow/g
+                            ...
+           sed -f fixup.sed myfile.xml > myfile2.xml                                  使用-f
+         3.sed 's/foo/bar/g;s/chicken/cow/g' myfile.xml > myfile2.xml                 使用 ;
+特点：sed会记住脚本中遇到的最后一个正则表达式 可以用空来表示使用上一个：  s/foo/bar/3       替换第三个  
+                                                                    s//bar/           替换第一个
+注意 如果替换的内容中有/ ,那么分隔用：
+
+打印与否：sed -n '/<HTML>/p' *.html
+写在脚本里    #n  
+             /<HTML>/p
+限制执行的位置，在命令前置一个地址即可：
+sed -n '$p' a.txt   打印最后一行
+sed -n '10,42p' a.txt  仅打印10-42行
+sed '/foo/,/bar/ s/baz/quux/g' a.txt    从含foo行开始，匹配bar行，结果把baz全替换quux
+/used/!s/new/used/g 没有used每行所有new改成used 注意 ！
+echo Tolstoy is worldly|sed 's/T[[:alpha:]]*y/Camus/'  sed 不加[[:alpha:]]匹配的是第一个字母读到文本最后一个字母
