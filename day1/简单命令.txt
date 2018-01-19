@@ -1,3 +1,4 @@
+第二章
 一.一个简单的脚本：
 who 查看系统有谁人登录
 who|wc -l                wc（字数计算程序） l（行数line） w（字数word） c（字符数character）
@@ -56,3 +57,7 @@ tr -d '\r' < dos-file.txt | sort > UNIX-file.txt
 四.简单的执行跟踪
 sh -x nusers
 在shell脚本中 set +x 关闭跟踪功能; -x 打开跟踪功能
+
+五.各种locale环境变量
+locale：控制让哪种语言或文化环境生效的功能
+locale -a
