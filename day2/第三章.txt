@@ -40,3 +40,5 @@ sed -n '10,42p' a.txt  仅打印10-42行
 sed '/foo/,/bar/ s/baz/quux/g' a.txt    从含foo行开始，匹配bar行，结果把baz全替换quux
 /used/!s/new/used/g 没有used每行所有new改成used 注意 ！
 echo Tolstoy is worldly|sed 's/T[[:alpha:]]*y/Camus/'  sed 不加[[:alpha:]]匹配的是第一个字母读到文本最后一个字母
+
+

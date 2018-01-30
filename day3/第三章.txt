@@ -1,0 +1,22 @@
+3.3.2 cut选定字段
+cut -d ： -f  1 filename
+-d 后的 : 是分隔符 按：分隔文件中的字段 
+-f 是取分隔字段的第几段 （主要是以字段为主）
+cut -c  主要是以字符为主
+
+3.3.3 join连接字段
+join 文件a  文件b
+文件连接前先sort 排序
+
+3.3.4 awk重新编排字段
+和sed有些相似
+awk将每条记录的字段数目存储到内建变量NF
+awk -F : '{print $1,$5}' /etc/passwd
+
+你可以发现输出出来的字段都是以空格分隔，awk输入输出用法是分开的，要设置OFS变量来改变输出字段的分隔字符
+awk -F : -v 'OPS=**' '{print $1,$5}' /etc/passwd
+打印行(参数之间用 , 号隔开)
+awk -F '{print "User",$1,"is really",$5}' /etc/passwd
+awk -F '{printf:"User %s is really %s\n",$1,$5}' /etc/passwd
+
+
