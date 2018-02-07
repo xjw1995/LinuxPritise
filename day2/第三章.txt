@@ -27,7 +27,8 @@ sed 's/（文中需要替换的地方：正则）/（替换的内容）/' file
                             ...
            sed -f fixup.sed myfile.xml > myfile2.xml                                  使用-f
          3.sed 's/foo/bar/g;s/chicken/cow/g' myfile.xml > myfile2.xml                 使用 ;
-特点：sed会记住脚本中遇到的最后一个正则表达式 可以用空来表示使用上一个：  s/foo/bar/3       替换第三个  
+特点：sed会记住脚本中遇到的最后一个正则‘’
+表达式 可以用空来表示使用上一个：  s/foo/bar/3       替换第三个  
                                                                     s//bar/           替换第一个
 注意 如果替换的内容中有/ ,那么分隔用：
 s:</H1>:</h1>:g

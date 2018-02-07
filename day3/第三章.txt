@@ -6,6 +6,8 @@ cut -c  主要是以字符为主
 
 3.3.3 join连接字段
 join 文件a  文件b
+多个格式同样的文件join到一起 join file1 file2 | join - file3 | join - file4 
+-t CHAR ：以指定字符作为输入输出的分隔符
 文件连接前先sort 排序
 
 3.3.4 awk重新编排字段
@@ -16,7 +18,12 @@ awk -F : '{print $1,$5}' /etc/passwd
 你可以发现输出出来的字段都是以空格分隔，awk输入输出用法是分开的，要设置OFS变量来改变输出字段的分隔字符
 awk -F : -v 'OPS=**' '{print $1,$5}' /etc/passwd
 打印行(参数之间用 , 号隔开)
-awk -F '{print "User",$1,"is really",$5}' /etc/passwd
-awk -F '{printf:"User %s is really %s\n",$1,$5}' /etc/passwd
+awk -F / '{print "User",$1,"is really",$5}' /etc/passwd
+awk -F / '{printf:"User %s is really %s\n",$1,$5}' /etc/passwd
 
+起始与清除
+awk 'BEGIN{FS=":";OFS="**"}
+{print $1,$5}' /etc/passwd 
 
+RS="" 记录空行隔开
+awk -v RS="" '{}'
