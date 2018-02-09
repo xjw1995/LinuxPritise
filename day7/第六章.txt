@@ -1,0 +1,19 @@
+6.2 
+    if-elif-else-fi语句
+        if 
+        then ..
+        else ..
+        fi
+
+    逻辑的not、and与or
+        ! && ||
+
+    test 命令 处理shell脚本里的各类工作,它产生的不是一般输出，而是可以使用的退出状态
+    两种方式
+    if  test "$str1"="$str2"  <==>    if ["$str1"="$str2"]
+    then
+        ...
+    fi
+
+
+
