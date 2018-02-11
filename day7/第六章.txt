@@ -15,5 +15,27 @@
         ...
     fi
 
+    case 语句
+    case $1 in
+    -f)
+        ...
+        ;;
+    -d | --directory)
+        ...
+        ;;
+    *)
+        echo $1:unknown option >&2
+        exit 1
+        ;;
+    esac
+
+    for循环
+    for i in atlbrochure*.xml
+    do
+        echo $i
+        my $i $i.old
+        sed 's/Atlanta/&,the capital of the South/' < $i.old > $i
+    done
+
 
 
